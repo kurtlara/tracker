@@ -6,8 +6,8 @@ An addiction tracker, with inspiration from "I am Sober"
 
 # Currently Implemented Features
 
-Currently the program only tracks your seconds since your
-last relapse and how many times today you relapsed
+- Tracks seconds since last relapse
+- How many times today you've relapsed
 
 ---
 
