@@ -83,14 +83,3 @@ if __name__ == "__main__":
     print(f"Seconds since last relapse: {int(most_recent())}")
     print(f"Times relapsed today      : {total_today()}")
 
-
-# Ideas >w<
-#
-# Follow someone's cum
-#   # Send notifications out to followers when relapsed
-#   # Add telegram support
-# Leaderboards
-# Undo Feature
-#   # Undo notification "whoopsies ur fwiend is a dumbass
-#   #   whore >w<"
-# Send an email to donald trump???
