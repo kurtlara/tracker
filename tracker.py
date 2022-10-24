@@ -80,6 +80,8 @@ if __name__ == "__main__":
 
     relapse()
 
-    print(f"Seconds since last relapse: {int(most_recent())}")
+    since_last = int(most_recent())
+    since_last = str(datetime.timedelta(seconds=since_last))
+    print(f"Seconds since last relapse: {since_last}")
     print(f"Times relapsed today      : {total_today()}")
 
