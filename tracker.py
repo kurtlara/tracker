@@ -1,15 +1,19 @@
-import datetime
+#!/usr/bin/env python3
+
+
+from datetime import datetime as dt
+from datetime import timedelta as delta
 
 
 def total_today():
     count = 0
 
-    now = datetime.datetime.now()
+    now = dt.now()
     now = now.strftime("%d %m %Y")
     day, month, year = now.split()
     for _ in log:
         _ = int(_)
-        _ = datetime.datetime.fromtimestamp(_)
+        _ = dt.fromtimestamp(_)
         _ = _.strftime("%d %m %Y")
         _day, _month, _year = _.split()
 
@@ -31,9 +35,11 @@ def most_recent():
     length = len(log)
     recent = log[length - 1]
     recent = int(recent)
+
     # last entry in log converted to <datetime>
-    recent = datetime.datetime.fromtimestamp(recent)
-    now    = datetime.datetime.now()
+    recent = dt.fromtimestamp(recent)
+    now    = dt.now()
+
     # calculates time between current time and last entry
     # in log
     delta  = now - recent
@@ -44,13 +50,19 @@ def most_recent():
 def relapse():
     user_input = input("Have you relapsed [y/n]: ")
 
-    if user_input[0] == 'y':
-        cur_time   = datetime.datetime.now()
-        unix       = datetime.datetime.timestamp(cur_time)
+    if user_input[0].lower() == 'y':
+        cur_time   = dt.now()
+        unix       = dt.timestamp(cur_time)
         unix       = int(unix)
 
         log.append(str(unix))
         write_to_file(unix)
+
+    for i, time in enumerate(log):
+        time = dt.fromtimestamp(int(time))
+        difference = dt.now() - time
+        print(i+1, time.strftime("%D %H:%M"), difference, sep=" ┃ ")
+
     
 
 def write_to_file(message):
@@ -81,7 +93,7 @@ if __name__ == "__main__":
     relapse()
 
     since_last = int(most_recent())
-    since_last = str(datetime.timedelta(seconds=since_last))
+    since_last = str(delta(seconds=since_last))
     print(f"Seconds since last relapse: {since_last}")
     print(f"Times relapsed today      : {total_today()}")
 
